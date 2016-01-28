@@ -243,11 +243,19 @@ download_file \
 
 HUNDRED_FT_TABLE="wv_100ft_contours"
 TWENTY_FT_TABLE="wv_20ft_contours"
+CONTOUR_SRC_SRID="26917"
 
 create_contour_table "${DEST_DB}" "${DEST_SRID}" "${HUNDRED_FT_TABLE}"
 create_contour_table "${DEST_DB}" "${DEST_SRID}" "${TWENTY_FT_TABLE}"
 
-for file in $(find "${DEM_DIR}" -name "*.zip" | sort) ; do
-	process_contour_zip "${file}" 26917 "${HUNDRED_FT_TABLE}" "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+for IN_ZIP_FILE in $(find "${DEM_DIR}" -name "*.zip" | sort) ; do
+	CONTOUR_TMPDIR=$(mktemp -d)
+
+        unzip -qq "${IN_ZIP_FILE}" -d "${CONTOUR_TMPDIR}"
+
+        generate_contours "${CONTOUR_TMPDIR}"/*.tif "${CONTOUR_SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_100 100 "${HUNDRED_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+        generate_contours "${CONTOUR_TMPDIR}"/*.tif "${CONTOUR_SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_20 20 "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+
+	rm -rf "${CONTOUR_TMPDIR}"
 done
 

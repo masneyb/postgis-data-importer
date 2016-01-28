@@ -120,25 +120,6 @@ generate_contours()
 	import_shp "${SRC_SRID}" "${DESTDIR}"/contour.shp "${DEST_DB_TABLE}" -a "" "${DEST_DB}" "${DEST_SRID}"
 }
 
-process_contour_zip()
-{
-	local IN_ZIP_FILE=$1
-	local SRC_SRID=$2
-	local HUNDRED_FT_TABLE=$3
-	local TWENTY_FT_TABLE=$4
-	local DEST_DB=$5
-	local DEST_SRID=$6
-
-	local CONTOUR_TMPDIR
-	CONTOUR_TMPDIR=$(mktemp -d)
-
-	unzip -qq "${IN_ZIP_FILE}" -d "${CONTOUR_TMPDIR}"
-	generate_contours "${CONTOUR_TMPDIR}"/*.tif "${SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_100 100 "${HUNDRED_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
-	generate_contours "${CONTOUR_TMPDIR}"/*.tif "${SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_20 20 "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
-
-	rm -rf "${CONTOUR_TMPDIR}"
-}
-
 create_contour_table()
 {
 	local DEST_DB=$1
