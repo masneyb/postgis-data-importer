@@ -13,7 +13,7 @@ SPATIAL_REF_SYS_SQL_FILE=/usr/share/pgsql/contrib/postgis-2.1/spatial_ref_sys.sq
 # Older Debian-based systems
 # POSTGIS_SQL_FILE=/usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
 # SPATIAL_REF_SYS_SQL_FILE=/usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
-INIT_DB=1
+INIT_DB=0
 
 
 if [ "${INIT_DB}" = "1" ] ; then
@@ -21,7 +21,8 @@ if [ "${INIT_DB}" = "1" ] ; then
 fi
 
 DEST_DIR=$(dirname "$0")/download/us_wv/other
-mkdir -p "${DEST_DIR}"
+DEM_DIR=$(dirname "$0")/download/us_wv/dem
+mkdir -p "${DEST_DIR}" "${DEM_DIR}"
 
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/transportation/interstateHighways/interstateHighwaysWV_USDOT_1997_utm83_shp.zip \
@@ -209,4 +210,17 @@ download_and_import_file \
 download_file \
 	http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_state_500k.zip \
 	"${DEST_DIR}"/cb_2014_us_state_500k.zip
+
+
+# Generate contour lines from the DEM files
+
+HUNDRED_FT_TABLE="wv_100ft_contours"
+TWENTY_FT_TABLE="wv_20ft_contours"
+
+create_contour_table "${DEST_DB}" "${DEST_SRID}" "${HUNDRED_FT_TABLE}"
+create_contour_table "${DEST_DB}" "${DEST_SRID}" "${TWENTY_FT_TABLE}"
+
+for file in $(find "${DEM_DIR}" -name "*.zip" | sort) ; do
+	process_contour_zip "${file}" 26917 "${HUNDRED_FT_TABLE}" "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+done
 

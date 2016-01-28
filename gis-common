@@ -88,3 +88,52 @@ init_postgis_db()
 	psql "${DEST_DB}" < "${POSTGIS_SQL_FILE}" > /dev/null
 	psql "${DEST_DB}" < "${SPATIAL_REF_SYS_SQL_FILE}" > /dev/null
 }
+
+generate_contours()
+{
+	local INFILE=$1
+	local SRC_SRID=$2
+	local DESTDIR=$3
+	local INTERVAL=$4
+	local DEST_DB_TABLE=$5
+	local DEST_DB=$6
+	local DEST_SRID=$7
+
+	echo "Generating contours for file ${INFILE} with interval ${INTERVAL}"
+	gdal_contour -a ele -i "${INTERVAL}" "${INFILE}" "${DESTDIR}"
+	import_shp "${SRC_SRID}" "${DESTDIR}"/contour.shp "${DEST_DB_TABLE}" -a "" "${DEST_DB}" "${DEST_SRID}"
+}
+
+process_contour_zip()
+{
+	local IN_ZIP_FILE=$1
+	local SRC_SRID=$2
+	local HUNDRED_FT_TABLE=$3
+	local TWENTY_FT_TABLE=$4
+	local DEST_DB=$5
+	local DEST_SRID=$6
+
+	local CONTOUR_TMPDIR
+	CONTOUR_TMPDIR=$(mktemp -d)
+
+	unzip -qq "${IN_ZIP_FILE}" -d "${CONTOUR_TMPDIR}"
+	generate_contours "${CONTOUR_TMPDIR}"/*.tif "${SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_100 100 "${HUNDRED_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+	generate_contours "${CONTOUR_TMPDIR}"/*.tif "${SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_20 20 "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+
+	rm -rf "${CONTOUR_TMPDIR}"
+}
+
+create_contour_table()
+{
+	local DEST_DB=$1
+	local DEST_SRID=$2
+	local DEST_DB_TABLE=$3
+
+	psql "${DEST_DB}" << __EOF__
+CREATE TABLE "${DEST_DB_TABLE}" (gid serial PRIMARY KEY,
+"id" int4,
+"ele" float8);
+SELECT AddGeometryColumn('','${DEST_DB_TABLE}','geom','${DEST_SRID}','MULTILINESTRING',2);
+__EOF__
+}
+
