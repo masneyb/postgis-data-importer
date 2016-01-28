@@ -26,15 +26,9 @@ DEST_DB=wvgis
 DEST_SRID=4326
 POSTGIS_SQL_FILE=/usr/share/pgsql/contrib/postgis-2.1/postgis.sql
 SPATIAL_REF_SYS_SQL_FILE=/usr/share/pgsql/contrib/postgis-2.1/spatial_ref_sys.sql
-# Older Debian-based systems
-# POSTGIS_SQL_FILE=/usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
-# SPATIAL_REF_SYS_SQL_FILE=/usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
-INIT_DB=0
 
 
-if [ "${INIT_DB}" = "1" ] ; then
-	init_postgis_db "${DEST_DB}" "${POSTGIS_SQL_FILE}" "${SPATIAL_REF_SYS_SQL_FILE}"
-fi
+init_postgis_db "${DEST_DB}" "${POSTGIS_SQL_FILE}" "${SPATIAL_REF_SYS_SQL_FILE}"
 
 DEST_DIR=$(dirname "$0")/download/us_wv/other
 DEM_DIR=$(dirname "$0")/download/us_wv/dem

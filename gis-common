@@ -103,6 +103,11 @@ init_postgis_db()
 	local POSTGIS_SQL_FILE=$2
 	local SPATIAL_REF_SYS_SQL_FILE=$3
 
+	DB_EXISTS=$(psql -lt | awk '{print $1}' | grep -w "${DEST_DB}" | wc -l)
+	if [ "${DB_EXISTS}" = "1" ] ; then
+		return 0
+	fi
+
 	echo "Initializing postgis database ${DEST_DB}"
 	createdb "${DEST_DB}"
 	echo "CREATE LANGUAGE plpgsql;" | psql "${DEST_DB}"
