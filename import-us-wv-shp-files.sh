@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# import-us-wv-shp-files.sh
+# Copyright (C) 2012-2013,2016 Brian Masney <masneyb@onstation.org>
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 set -e # Exit if any commands fail
 set -u # Warn about uninitialized variables
 
@@ -85,6 +101,17 @@ download_and_import_file \
 	railroads_rahallTransportationInstitute_2005_UTM83.shp \
 	26917 \
 	wv_census_rails \
+	"" \
+	"" \
+	"${DEST_DB}" \
+	"${DEST_SRID}"
+
+download_and_import_file \
+	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Transportation/miscellaneousTransportation_USCensus_2000_utm83.zip \
+	"${DEST_DIR}"/miscellaneousTransportation_USCensus_2000_utm83.zip \
+	miscellaneousTransportation_USCensus_2000_utm83.shp \
+	26917 \
+	wv_misc_transportation \
 	"" \
 	"" \
 	"${DEST_DB}" \
