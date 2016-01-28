@@ -35,7 +35,6 @@ init_postgis_db "${DEST_DB}" "${POSTGIS_SQL_FILE}" "${SPATIAL_REF_SYS_SQL_FILE}"
 
 DEST_DIR=$(dirname "$0")/download/us_wv/other
 DEM_DIR=$(dirname "$0")/download/us_wv/dem
-mkdir -p "${DEST_DIR}" "${DEM_DIR}"
 
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/transportation/interstateHighways/interstateHighwaysWV_USDOT_1997_utm83_shp.zip \
