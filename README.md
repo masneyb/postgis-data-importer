@@ -10,9 +10,10 @@ digital elevation model (DEM) files.
 
 ## Installation (Fedora 23)
 	
-* Install dependencies: `sudo dnf install postgis postgresql postgresql-server`
+* Install dependencies
+  - RedHat/Fedora: `sudo dnf install postgis postgresql postgresql-server`
 * Setup database directory: `sudo postgresql-setup --initdb --unit postgresql`
-* Create PostgreSQL super user (note: gives access to other DBs): `sudo -u postgres createuser -s USERNAME_THAT_YOU_WILL_RUN_THIS_AS`
+* Create PostgreSQL super user for your user account (note: gives access to other DBs): `MY_USER=$(whoami) && sudo -u postgres createuser -s "${MY_USER)"`
 * If you would like to generate contour lines, then download the appopriate DEM ZIP
   files for the areas that you want to contour from
   http://wvgis.wvu.edu/data/dataset.php?ID=261 into the _download/us_wv/dem/_ directory.
