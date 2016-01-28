@@ -113,7 +113,6 @@ download_and_import_file \
 	"${DEST_DB}" \
 	"${DEST_SRID}"
 
-# FIXME - old file was recreationalTrailsOfWV_manySourcesWvgistc_20110803_utm83_shp.zip
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Transportation/recreationalWWTrailsofWV_20151117_utm83.zip \
 	"${DEST_DIR}"/recreationalTrailsofWV_manysources_20151117_utm83.zip \
@@ -158,7 +157,6 @@ download_and_import_file \
 	"${DEST_DB}" \
 	"${DEST_SRID}"
 
-# FIXME - old file was stateForestBoundaries_WVDNR_200405_utm83_shp.zip
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Boundaries/wvStateForestBoundaries_wvdof_092015_utm83.zip \
 	"${DEST_DIR}"/wvStateForestBoundaries_wvdof_092015_utm83.zip \
@@ -181,14 +179,12 @@ download_and_import_file \
 	"${DEST_DB}" \
 	"${DEST_SRID}"
 
-# FIXME - old file was wildlifeManagementAreas_WVDNR_12092011_utm83_shp.zip
-# FIXME - change table name to wvdnr_managed_lands
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/wildlifeManagementAreas/wvdnrManagedLands_wvdnr_10092015_utm83_shp.zip \
 	"${DEST_DIR}"/wvdnrManagedLands_wvdnr_10092015_utm83_shp.zip \
 	wvdnrManagedLands_wvdnr_10092015_utm83_shp/wvdnrManagedLands_wvdnr_10092015_utm83.shp \
 	26917 \
-	wv_wildlife_management_areas \
+	wvdnr_managed_lands \
 	"" \
 	"" \
 	"${DEST_DB}" \
@@ -205,7 +201,6 @@ download_and_import_file \
 	"${DEST_DB}" \
 	"${DEST_SRID}"
 	
-# FIXME - old file was incorporatedPlacesWithCDPs_USCensus_200803_UTM83_shp.zip
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Boundaries/IncorporatedPlaces_Census_201111_UTM83.zip \
 	"${DEST_DIR}"/IncorporatedPlaces_Census_201111_UTM83.zip \
