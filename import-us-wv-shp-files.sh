@@ -232,12 +232,6 @@ download_and_import_file \
 	"${DEST_DB}" \
 	"${DEST_SRID}"
 
-# FIXME - move into national script
-# FIXME - old file was usastates_st99_d00_shp.zip
-download_file \
-	http://www2.census.gov/geo/tiger/GENZ2014/shp/cb_2014_us_state_500k.zip \
-	"${DEST_DIR}"/cb_2014_us_state_500k.zip
-
 
 # Generate contour lines from the DEM files
 
