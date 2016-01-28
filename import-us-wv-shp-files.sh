@@ -107,7 +107,7 @@ download_and_import_file \
 	"${DEST_DIR}"/miscellaneousTransportation_USCensus_2000_utm83.zip \
 	miscellaneousTransportation_USCensus_2000_utm83.shp \
 	26917 \
-	wv_misc_transportation \
+	wv_census_misc_trans \
 	"" \
 	"" \
 	"${DEST_DB}" \
