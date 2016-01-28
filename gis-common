@@ -1,0 +1,90 @@
+#!/bin/bash -e
+
+set -e # Exit if any commands fail
+set -u # Warn about uninitialized variables
+
+download_file()
+{
+	local URL=$1
+	local DEST=$2
+
+	echo ""
+
+	if [ -f "${DEST}" ] ; then
+		echo "Skipping the download of ${URL} since ${DEST} already exists."
+		return
+	fi
+
+	echo "Downloading ${URL} to ${DEST}."
+	wget -O "${DEST}" "${URL}"
+}
+
+download_and_import_file()
+{
+	local URL=$1
+	local DEST=$2
+	local INNER_ZIP_SHP_FILENAME=$3
+	local SRC_SRID=$4
+	local DEST_DB_TABLE=$5
+	local SHP2PGSQL_EXTRA_ARGS=$6
+	local LIMIT_TO_FIELDS=$7
+	local DEST_DB=$8
+	local DEST_SRID=$9
+
+	download_file "${URL}" "${DEST}"
+	
+	local ZIP_TMPDIR
+	ZIP_TMPDIR=$(mktemp -d)
+	unzip -qq "${DEST}" -d "${ZIP_TMPDIR}"
+	import_shp "${SRC_SRID}" "${ZIP_TMPDIR}"/"${INNER_ZIP_SHP_FILENAME}" "${DEST_DB_TABLE}" "${SHP2PGSQL_EXTRA_ARGS}" "${LIMIT_TO_FIELDS}" "${DEST_DB}" "${DEST_SRID}"
+	rm -rf "${ZIP_TMPDIR}"
+}
+
+import_shp()
+{
+	local SRC_SRID=$1
+	local SRC_SHP=$2
+	local DEST_DB_TABLE=$3
+	local SHP2PGSQL_EXTRA_ARGS=$4
+	local LIMIT_TO_FIELDS=$5
+	local DEST_DB=$6
+	local DEST_SRID=$7
+
+	local OGRARGS=""
+
+	if [ "${SRC_SRID}" != "${DEST_SRID}" ] ; then
+		OGRARGS="-s_srs EPSG:${SRC_SRID} -t_srs EPSG:${DEST_SRID} ${OGRARGS}"
+	fi
+
+	if [ "${LIMIT_TO_FIELDS}" != "" ] ; then
+		OGRARGS="-select ${LIMIT_TO_FIELDS} ${OGRARGS}"
+	fi
+
+	if [ "${OGRARGS}" != "" ] ; then
+		local TRANS_TMPDIR
+		TRANS_TMPDIR=$(mktemp -d)
+		local NEW_SHP="${TRANS_TMPDIR}"/temp.shp
+		echo "Transforming ${SRC_SHP} with ogr2ogr ${OGRARGS} via ${NEW_SHP}"
+		ogr2ogr -skipfailures -f "ESRI Shapefile" ${OGRARGS} "${NEW_SHP}" "${SRC_SHP}"
+		echo "Importing ${NEW_SHP} into table ${DEST_DB}.${DEST_DB_TABLE}"
+		shp2pgsql ${SHP2PGSQL_EXTRA_ARGS} -s "${DEST_SRID}" "${NEW_SHP}" "${DEST_DB_TABLE}" | psql "${DEST_DB}" > /dev/null
+		rm -rf "${TRANS_TMPDIR}"
+	else
+		echo "Importing ${SRC_SHP} into table ${DEST_DB}.${DEST_DB_TABLE}"
+		shp2pgsql ${SHP2PGSQL_EXTRA_ARGS} -s "${SRC_SRID}" "${SRC_SHP}" "${DEST_DB_TABLE}" | psql "${DEST_DB}" > /dev/null
+	fi
+}
+
+init_postgis_db()
+{
+	local DEST_DB=$1
+	local POSTGIS_SQL_FILE=$2
+	local SPATIAL_REF_SYS_SQL_FILE=$3
+
+	echo "Initializing postgis database ${DEST_DB}"
+	createdb "${DEST_DB}"
+	echo "CREATE LANGUAGE plpgsql;" | psql "${DEST_DB}"
+
+	psql "${DEST_DB}" < "${POSTGIS_SQL_FILE}" > /dev/null
+	psql "${DEST_DB}" < "${SPATIAL_REF_SYS_SQL_FILE}" > /dev/null
+}
