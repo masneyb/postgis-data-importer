@@ -245,6 +245,12 @@ HUNDRED_FT_TABLE="wv_100ft_contours"
 TWENTY_FT_TABLE="wv_20ft_contours"
 CONTOUR_SRC_SRID="26917"
 
+TABLE_EXISTS=$(does_postgresql_table_exist "${DEST_DB}" "${HUNDRED_FT_TABLE}")
+if [ "${TABLE_EXISTS}" = "1" ] ; then
+	echo "Not generating the contour lines since the table ${DEST_DB}.${HUNDRED_FT_TABLE} already exists"
+	exit 0
+fi
+
 create_contour_table "${DEST_DB}" "${DEST_SRID}" "${HUNDRED_FT_TABLE}"
 create_contour_table "${DEST_DB}" "${DEST_SRID}" "${TWENTY_FT_TABLE}"
 

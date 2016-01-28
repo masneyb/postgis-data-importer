@@ -48,6 +48,12 @@ download_and_import_file()
 	local DEST_SRID=$9
 
 	download_file "${URL}" "${DEST}"
+
+	TABLE_EXISTS=$(does_postgresql_table_exist "${DEST_DB}" "${DEST_DB_TABLE}")
+	if [ "${TABLE_EXISTS}" = "1" ] ; then
+		echo "Skipping the import of ${DEST} since the table ${DEST_DB}.${DEST_DB_TABLE} already exists"
+		return 0
+	fi
 	
 	local ZIP_TMPDIR
 	ZIP_TMPDIR=$(mktemp -d)
@@ -132,5 +138,13 @@ CREATE TABLE "${DEST_DB_TABLE}" (gid serial PRIMARY KEY,
 "ele" float8);
 SELECT AddGeometryColumn('','${DEST_DB_TABLE}','geom','${DEST_SRID}','MULTILINESTRING',2);
 __EOF__
+}
+
+does_postgresql_table_exist()
+{
+	local DB=$1
+	local TABLE=$2
+
+	psql -c "\d" "${DB}" -t | awk '{print $3}' | grep -w "${TABLE}" | wc -l
 }
 
