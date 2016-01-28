@@ -21,12 +21,15 @@ set -u # Warn about uninitialized variables
 
 . "$(dirname "$0")"/gis-common
 
-# FIXME - read from command line
-DEST_DB=wvgis
-DEST_SRID=4326
-POSTGIS_SQL_FILE=/usr/share/pgsql/contrib/postgis-2.1/postgis.sql
-SPATIAL_REF_SYS_SQL_FILE=/usr/share/pgsql/contrib/postgis-2.1/spatial_ref_sys.sql
+DEST_DB=${1:-}
+DEST_SRID=${2:-}
+POSTGIS_SQL_FILE=${3:-}
+SPATIAL_REF_SYS_SQL_FILE=${4:-}
 
+if [ "${DEST_DB}" = "" ] || [ "${DEST_SRID}" = "" ] || [ "${POSTGIS_SQL_FILE}" = "" ] || [ "${SPATIAL_REF_SYS_SQL_FILE}" = "" ] ; then
+	echo "usage: $0 <destination database> <destination srid> <postgis SQL file> <spatial reference system sql file>" >&2
+	exit 1
+fi
 
 init_postgis_db "${DEST_DB}" "${POSTGIS_SQL_FILE}" "${SPATIAL_REF_SYS_SQL_FILE}"
 
