@@ -26,6 +26,8 @@ DEST_SRID=${2:-}
 POSTGIS_SQL_FILE=${3:-}
 SPATIAL_REF_SYS_SQL_FILE=${4:-}
 
+echo "Received arguments ${DEST_DB} ${DEST_SRID} ${POSTGIS_SQL_FILE} ${SPATIAL_REF_SYS_SQL_FILE}"
+
 if [ "${DEST_DB}" = "" ] || [ "${DEST_SRID}" = "" ] || [ "${POSTGIS_SQL_FILE}" = "" ] || [ "${SPATIAL_REF_SYS_SQL_FILE}" = "" ] ; then
 	echo "usage: $0 <destination database> <destination srid> <postgis SQL file> <spatial reference system sql file>" >&2
 	exit 1
