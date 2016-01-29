@@ -1,4 +1,4 @@
-# wv-postgis
+# postgis-data-importer
 
 This script is used to import various SHP files from the
 [West Virginia GIS Technical Center](http://wvgis.wvu.edu/) into a
@@ -10,7 +10,8 @@ model (DEM) files.
 ## Example
 
 See the [Coopers Rock Trails](https://github.com/masneyb/coopers-rock-trails)
-project for an example of a map created using MapServer with this project.
+project for an example of a map created using [MapServer](http://www.mapserver.org/)
+with this project.
 
 
 ## Installation (Fedora 23)
