@@ -23,17 +23,13 @@ set -u # Warn about uninitialized variables
 
 DEST_DB=${1:-}
 DEST_SRID=${2:-}
-POSTGIS_SQL_FILE=${3:-}
-SPATIAL_REF_SYS_SQL_FILE=${4:-}
 
-echo "Received arguments ${DEST_DB} ${DEST_SRID} ${POSTGIS_SQL_FILE} ${SPATIAL_REF_SYS_SQL_FILE}"
-
-if [ "${DEST_DB}" = "" ] || [ "${DEST_SRID}" = "" ] || [ "${POSTGIS_SQL_FILE}" = "" ] || [ "${SPATIAL_REF_SYS_SQL_FILE}" = "" ] ; then
-	echo "usage: $0 <destination database> <destination srid> <postgis SQL file> <spatial reference system sql file>" >&2
+if [ "${DEST_DB}" = "" ] || [ "${DEST_SRID}" = "" ] ; then
+	echo "usage: $0 <destination database> <destination srid>" >&2
 	exit 1
 fi
 
-init_postgis_db "${DEST_DB}" "${POSTGIS_SQL_FILE}" "${SPATIAL_REF_SYS_SQL_FILE}"
+init_postgis_db "${DEST_DB}"
 
 DEST_DIR=$(dirname "$0")/download/us_wv/other
 DEM_DIR=$(dirname "$0")/download/us_wv/dem

@@ -100,8 +100,6 @@ import_shp()
 init_postgis_db()
 {
 	local DEST_DB=$1
-	local POSTGIS_SQL_FILE=$2
-	local SPATIAL_REF_SYS_SQL_FILE=$3
 
 	DB_EXISTS=$(psql -lt | awk '{print $1}' | grep -w "${DEST_DB}" | wc -l)
 	if [ "${DB_EXISTS}" = "1" ] ; then
@@ -110,10 +108,9 @@ init_postgis_db()
 
 	echo "Initializing postgis database ${DEST_DB}"
 	createdb "${DEST_DB}"
-	echo "CREATE LANGUAGE plpgsql;" | psql "${DEST_DB}"
 
-	psql "${DEST_DB}" < "${POSTGIS_SQL_FILE}" > /dev/null
-	psql "${DEST_DB}" < "${SPATIAL_REF_SYS_SQL_FILE}" > /dev/null
+	echo "CREATE LANGUAGE plpgsql;" | psql "${DEST_DB}"
+	echo "CREATE EXTENSION postgis;" | psql "${DEST_DB}"
 }
 
 generate_contours()
