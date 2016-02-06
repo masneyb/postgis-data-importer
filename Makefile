@@ -3,3 +3,6 @@ DEST_SRID=4326
 
 us_wv:
 	./import-us-wv-shp-files.sh wvgis "${DEST_SRID}"
+
+shellcheck:
+	shellcheck import-us-wv-shp-files.sh
