@@ -18,9 +18,9 @@ with this project.
 	
 * Install dependencies
   - RedHat/Fedora:
-    - `sudo dnf install postgis postgresql postgresql-server gdal`
+    - `sudo dnf install make unzip postgis postgresql postgresql-server gdal`
     - Setup database directory: `sudo postgresql-setup --initdb --unit postgresql`
-  - Debian/Ubuntu: `sudo apt-get install postgis postgresql-client postgresql-9.4 gdal-bin`
+  - Debian/Ubuntu: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.4 gdal-bin`
 * Create PostgreSQL super user for your user account (note: gives access to other DBs):
   `MY_USER=$(whoami) && sudo -u postgres createuser -s "${MY_USER}"`
 * If you would like to generate contour lines, then download the appopriate DEM ZIP
