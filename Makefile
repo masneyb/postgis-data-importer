@@ -6,3 +6,4 @@ us_wv:
 
 shellcheck:
 	shellcheck import-us-wv-shp-files.sh
+	shellcheck download-us-wv-usda-2014-aerial-images.sh
