@@ -103,20 +103,20 @@ download_county_aerial()
 	fi
 }
 
-#download_county_aerial Barbour/ortho_1-1_1n_s_wv001_2014_1 barbour
-#download_county_aerial Berkeley/ortho_1-1_1n_s_wv003_2014_1 berkeley
-#download_county_aerial Grant/ortho_1-1_1n_s_wv023_2014_1 grant
-#download_county_aerial Greenbrier/ortho_1-1_1n_s_wv025_2014_1 greenbrier
-#download_county_aerial Hampshire/ortho_1-1_1n_s_wv027_2014_1 hampshire
-#download_county_aerial Hardy/ortho_1-1_1n_s_wv031_2014_1 hardy
-#download_county_aerial Jefferson/ortho_1-1_1n_s_wv037_2014_1 jefferson
-#download_county_aerial Mercer/ortho_1-1_1n_s_wv055_2014_1 mercer
-#download_county_aerial Mineral/ortho_1-1_1n_s_wv057_2014_1 mineral
+download_county_aerial Barbour/ortho_1-1_1n_s_wv001_2014_1 barbour
+download_county_aerial Berkeley/ortho_1-1_1n_s_wv003_2014_1 berkeley
+download_county_aerial Grant/ortho_1-1_1n_s_wv023_2014_1 grant
+download_county_aerial Greenbrier/ortho_1-1_1n_s_wv025_2014_1 greenbrier
+download_county_aerial Hampshire/ortho_1-1_1n_s_wv027_2014_1 hampshire
+download_county_aerial Hardy/ortho_1-1_1n_s_wv031_2014_1 hardy
+download_county_aerial Jefferson/ortho_1-1_1n_s_wv037_2014_1 jefferson
+download_county_aerial Mercer/ortho_1-1_1n_s_wv055_2014_1 mercer
+download_county_aerial Mineral/ortho_1-1_1n_s_wv057_2014_1 mineral
 download_county_aerial Monongalia/ortho_1-1_1n_s_wv061_2014_1 monongalia
-#download_county_aerial Monroe/ortho_1-1_1n_s_wv063_2014_1 monroe
-#download_county_aerial Morgan/ortho_1-1_1n_s_wv065_2014_1 morgan
-#download_county_aerial Pendleton/ortho_1-1_1n_s_wv071_2014_1 pendleton
-#download_county_aerial Pocahontas/ortho_1-1_1n_s_wv075_2014_1 pocahontas
+download_county_aerial Monroe/ortho_1-1_1n_s_wv063_2014_1 monroe
+download_county_aerial Morgan/ortho_1-1_1n_s_wv065_2014_1 morgan
+download_county_aerial Pendleton/ortho_1-1_1n_s_wv071_2014_1 pendleton
+download_county_aerial Pocahontas/ortho_1-1_1n_s_wv075_2014_1 pocahontas
 download_county_aerial Preston/ortho_1-1_1n_s_wv077_2014_1 preston
-#download_county_aerial Summers/ortho_1-1_1n_s_wv089_2014_1 summers
+download_county_aerial Summers/ortho_1-1_1n_s_wv089_2014_1 summers
 download_county_aerial Tucker/ortho_1-1_1n_s_wv093_2014_1 tucker
