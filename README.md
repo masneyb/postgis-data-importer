@@ -5,11 +5,8 @@ This script is used to import various SHP files from the
 PostgreSQL/PostGIS database. This ensures that all layers use the
 same spatial reference system ID (SRID) to speed up read requests. The
 script generates contour lines (20 foot and 100 foot intervals)
-from a list of digital elevation model (DEM) files.
-
-This script also downloads aerial imagery and converts the non-free
-MrSID files into JPGs.
-
+from a list of digital elevation model (DEM) files. This script also
+downloads aerial imagery.
 
 ## Example
 
@@ -27,12 +24,11 @@ with this project.
   - Debian/Ubuntu: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.4 gdal-bin`
 * Create PostgreSQL super user for your user account (note: gives full access to other DBs):
   `MY_USER=$(whoami) && sudo -u postgres createuser -s "${MY_USER}"`
-* If you'd like to download the aerial imagery, register for a developer account with
-  [Lizard Tech](https://www.lizardtech.com/developer/) and download the unified SDK.
 * Edit the settings at the top of the _Makefile_.
 * Examine the bottom of the DEM and aerial import script
   (_bin/us_wv/download-us-wv-dem-files.sh_ and
   _bin/us_wv/download-us-wv-usda-2014-aerial-images.sh_) to ensure that the
-  data is downloaded for the area of interest.
+  data is downloaded for your area of interest. It is currently configured to
+  download the data for all regions that are underlain by karst.
 * Run `make` to import the data into the _wvgis_ PostgreSQL database.
 
