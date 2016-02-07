@@ -34,15 +34,15 @@ if [ "${MRSID_DECODE_BINARY}" = "" ] || [ ! -x "${MRSID_DECODE_BINARY}" ] ; then
 fi
 
 BASE_URL="ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/ImageryBaseMaps/NAIP2014/NAIP2014_countyMosaics_compressed"
-BASE_DIR=$(dirname "$0")
+
+BASE_DIR=$(dirname "$0")/../..
+. "${BASE_DIR}"/bin/gis-common
 
 MRSID_DEST_DIR="${BASE_DIR}"/download/us_wv/aerial/USDA-2014/MrSID
 MRSID_MAPSERVER_FILE="${MRSID_DEST_DIR}"/2014.map
 
 JPG_DEST_DIR="${BASE_DIR}"/download/us_wv/aerial/USDA-2014/JPG
 JPG_MAPSERVER_FILE="${JPG_DEST_DIR}"/2014.map
-
-. "$(dirname "$0")"/gis-common
 
 # Clear the mapserver files since this script appends to them
 rm -f "${JPG_MAPSERVER_FILE}"

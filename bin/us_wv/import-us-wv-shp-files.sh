@@ -19,7 +19,8 @@
 set -e # Exit if any commands fail
 set -u # Warn about uninitialized variables
 
-. "$(dirname "$0")"/gis-common
+BASE_DIR=$(dirname "$0")/../..
+. "${BASE_DIR}"/bin/gis-common
 
 DEST_DB=${1:-}
 DEST_SRID=${2:-}
@@ -31,8 +32,8 @@ fi
 
 init_postgis_db "${DEST_DB}"
 
-DEST_DIR=$(dirname "$0")/download/us_wv/other
-DEM_DIR=$(dirname "$0")/download/us_wv/dem
+DEST_DIR="${BASE_DIR}"/download/us_wv/other
+DEM_DIR="${BASE_DIR}"/download/us_wv/dem
 
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/transportation/interstateHighways/interstateHighwaysWV_USDOT_1997_utm83_shp.zip \
