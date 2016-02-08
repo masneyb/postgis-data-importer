@@ -5,10 +5,10 @@ This script is used to import various SHP files from the
 PostgreSQL/PostGIS database. This ensures that all layers use the
 same spatial reference system (SRID) ID to speed up read requests. The
 script generates contour lines (20 foot and 100 foot intervals)
-from a list of digital elevation model (DEM) files. This script also
-downloads aerial imagery and creates a mapserver file.
+from a list of digital elevation model (DEM) files. Aerial imagery
+and a corresponding mapserver file is also generated.
 
-## Example
+## Examples
 
 See the [Monongalia / Preston Trail Maps](https://github.com/masneyb/monongalia-preston-wv-trail-maps)
 project for an example of a map created using [MapServer](http://www.mapserver.org/)
