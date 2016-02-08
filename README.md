@@ -28,9 +28,9 @@ This project was primarily written to support the
 * Create PostgreSQL super user for your user account (note: gives full access to other DBs):
   `MY_USER=$(whoami) && sudo -u postgres createuser -s "${MY_USER}"`
 * Edit the settings at the top of the _Makefile_.
-* Examine the bottom of the DEM and aerial import script
-  ([bin/us_wv/download-us-wv-dem-files.sh](bin/us_wv/download-us-wv-dem-files.sh) and
-   [bin/us_wv/download-us-wv-usda-2014-aerial-images.sh](bin/us_wv/download-us-wv-usda-2014-aerial-images.sh))
+* Examine the bottom of the 
+  [DEM](bin/us_wv/download-us-wv-dem-files.sh) and
+  [aerial](bin/us_wv/download-us-wv-usda-2014-aerial-images.sh) import scripts
   to ensure that the data is downloaded for your area of interest. It is currently
   configured to download the data for all regions that are underlain by karst.
 * Run `make` to import the vector data into the _wvgis_ PostgreSQL database.
