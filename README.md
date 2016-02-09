@@ -24,7 +24,8 @@ This project was primarily written to support the
   - RedHat/Fedora:
     - `sudo dnf install make unzip postgis postgresql postgresql-server gdal`
     - Setup database directory: `sudo postgresql-setup --initdb --unit postgresql`
-  - Debian/Ubuntu: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.4 gdal-bin`
+  - Debian Jessie: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.4 gdal-bin`
+  - Ubuntu 14.04: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.3 gdal-bin postgresql-9.3-postgis-2.1`
 * Create PostgreSQL super user for your user account (note: gives full access to other DBs):
   `MY_USER=$(whoami) && sudo -u postgres createuser -s "${MY_USER}"`
 * Edit the settings at the top of the _Makefile_.
