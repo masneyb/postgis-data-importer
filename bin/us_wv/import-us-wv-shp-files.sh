@@ -34,6 +34,7 @@ init_postgis_db "${DEST_DB}"
 
 DEST_DIR="${BASE_DIR}"/download/us_wv/other
 DEM_DIR="${BASE_DIR}"/download/us_wv/dem
+USDA_2014_AERIAL_DIR="${BASE_DIR}"/download/us_wv/aerial/USDA-2014
 
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/transportation/interstateHighways/interstateHighwaysWV_USDOT_1997_utm83_shp.zip \
@@ -248,4 +249,19 @@ else
 	echo "Not generating the contour lines since the table ${DEST_DB}.${HUNDRED_FT_TABLE} already exists"
 fi
 
+
+# Import aerial imagery
+
+USDA_2014_AERIAL_TABLE="wv_aerial_usda_2014"
+
+AERIAL_TABLE_EXISTS=$(does_postgresql_table_exist "${DEST_DB}" "${USDA_2014_AERIAL_TABLE}")
+if [ "${AERIAL_TABLE_EXISTS}" = "0" ] ; then
+	create_aerial_image_table "${DEST_DB}" "${USDA_2014_AERIAL_TABLE}"
+
+	for INFILE in $(find "${USDA_2014_AERIAL_DIR}" -name "*.jp2" | sort) ; do
+		import_raster_image "${INFILE}" "${DEST_DB}" "${USDA_2014_AERIAL_TABLE}"
+	done
+else
+	echo "Not importing the aerial imagery since the table ${DEST_DB}.${USDA_2014_AERIAL_TABLE} already exists"
+fi
 
