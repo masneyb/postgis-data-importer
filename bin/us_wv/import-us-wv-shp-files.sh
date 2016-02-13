@@ -229,23 +229,23 @@ HUNDRED_FT_TABLE="wv_100ft_contours"
 TWENTY_FT_TABLE="wv_20ft_contours"
 CONTOUR_SRC_SRID="26917"
 
-TABLE_EXISTS=$(does_postgresql_table_exist "${DEST_DB}" "${HUNDRED_FT_TABLE}")
-if [ "${TABLE_EXISTS}" = "1" ] ; then
+CONTOUR_TABLE_EXISTS=$(does_postgresql_table_exist "${DEST_DB}" "${HUNDRED_FT_TABLE}")
+if [ "${CONTOUR_TABLE_EXISTS}" = "0" ] ; then
+	create_contour_table "${DEST_DB}" "${DEST_SRID}" "${HUNDRED_FT_TABLE}"
+	create_contour_table "${DEST_DB}" "${DEST_SRID}" "${TWENTY_FT_TABLE}"
+
+	for IN_ZIP_FILE in $(find "${DEM_DIR}" -name "*.zip" | sort) ; do
+		CONTOUR_TMPDIR=$(mktemp -d)
+
+	        unzip -qq "${IN_ZIP_FILE}" -d "${CONTOUR_TMPDIR}"
+
+	        generate_contours "${CONTOUR_TMPDIR}"/*.tif "${CONTOUR_SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_100 100 "${HUNDRED_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+	        generate_contours "${CONTOUR_TMPDIR}"/*.tif "${CONTOUR_SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_20 20 "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+
+		rm -rf "${CONTOUR_TMPDIR}"
+	done
+else
 	echo "Not generating the contour lines since the table ${DEST_DB}.${HUNDRED_FT_TABLE} already exists"
-	exit 0
 fi
 
-create_contour_table "${DEST_DB}" "${DEST_SRID}" "${HUNDRED_FT_TABLE}"
-create_contour_table "${DEST_DB}" "${DEST_SRID}" "${TWENTY_FT_TABLE}"
-
-for IN_ZIP_FILE in $(find "${DEM_DIR}" -name "*.zip" | sort) ; do
-	CONTOUR_TMPDIR=$(mktemp -d)
-
-        unzip -qq "${IN_ZIP_FILE}" -d "${CONTOUR_TMPDIR}"
-
-        generate_contours "${CONTOUR_TMPDIR}"/*.tif "${CONTOUR_SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_100 100 "${HUNDRED_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
-        generate_contours "${CONTOUR_TMPDIR}"/*.tif "${CONTOUR_SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_20 20 "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
-
-	rm -rf "${CONTOUR_TMPDIR}"
-done
 
