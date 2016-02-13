@@ -156,8 +156,9 @@ import_raster_image()
 	local DEST_DB=$2
 	local DEST_DB_TABLE=$3
 
+	echo ""
 	echo "Importing raster image ${INFILE} into ${DEST_DB}.${DEST_DB_TABLE}."
-	raster2pgsql -C -x -F -I -a "${INFILE}" "${DEST_DB_TABLE}" | psql "${DEST_DB}"
+	raster2pgsql -F -I -a "${INFILE}" "${DEST_DB_TABLE}" | psql "${DEST_DB}"
 }
 
 create_aerial_image_table()
