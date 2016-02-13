@@ -150,17 +150,6 @@ does_postgresql_table_exist()
 	psql -c "\d" "${DB}" -t | awk '{print $3}' | grep -w "${TABLE}" | wc -l
 }
 
-import_raster_image()
-{
-	local INFILE=$1
-	local DEST_DB=$2
-	local DEST_DB_TABLE=$3
-
-	echo ""
-	echo "Importing raster image ${INFILE} into ${DEST_DB}.${DEST_DB_TABLE}."
-	raster2pgsql -F -I -a "${INFILE}" "${DEST_DB_TABLE}" | psql "${DEST_DB}"
-}
-
 create_aerial_image_table()
 {
 	local DEST_DB=$1

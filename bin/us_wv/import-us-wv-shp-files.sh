@@ -258,9 +258,10 @@ AERIAL_TABLE_EXISTS=$(does_postgresql_table_exist "${DEST_DB}" "${USDA_2014_AERI
 if [ "${AERIAL_TABLE_EXISTS}" = "0" ] ; then
 	create_aerial_image_table "${DEST_DB}" "${USDA_2014_AERIAL_TABLE}"
 
-	for INFILE in $(find "${USDA_2014_AERIAL_DIR}" -name "*.jp2" | sort) ; do
-		import_raster_image "${INFILE}" "${DEST_DB}" "${USDA_2014_AERIAL_TABLE}"
-	done
+        echo ""
+        echo "Importing raster images in ${USDA_2014_AERIAL_TABLE} into ${DEST_DB}.${USDA_2014_AERIAL_TABLE}."
+
+	raster2pgsql -F -I -a "${USDA_2014_AERIAL_DIR}"/*.jp2 "${USDA_2014_AERIAL_TABLE}" | psql "${DEST_DB}"
 else
 	echo "Not importing the aerial imagery since the table ${DEST_DB}.${USDA_2014_AERIAL_TABLE} already exists"
 fi
