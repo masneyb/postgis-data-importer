@@ -261,7 +261,7 @@ if [ "${AERIAL_TABLE_EXISTS}" = "0" ] ; then
         echo ""
         echo "Importing raster images in ${USDA_2014_AERIAL_DIR} into ${DEST_DB}.${USDA_2014_AERIAL_TABLE}."
 
-	raster2pgsql -F -I -a "${USDA_2014_AERIAL_DIR}"/*.jp2 "${USDA_2014_AERIAL_TABLE}" | psql "${DEST_DB}"
+	raster2pgsql -e -F -I -a "${USDA_2014_AERIAL_DIR}"/*.jp2 "${USDA_2014_AERIAL_TABLE}" | psql "${DEST_DB}"
 else
 	echo "Not importing the aerial imagery since the table ${DEST_DB}.${USDA_2014_AERIAL_TABLE} already exists"
 fi
