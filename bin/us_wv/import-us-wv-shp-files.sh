@@ -34,7 +34,7 @@ init_postgis_db "${DEST_DB}"
 
 DEST_DIR="${BASE_DIR}"/download/us_wv/other
 DEM_DIR="${BASE_DIR}"/download/us_wv/dem
-USDA_2014_AERIAL_DIR="${BASE_DIR}"/download/us_wv/aerial/USDA-2014
+#USDA_2014_AERIAL_DIR="${BASE_DIR}"/download/us_wv/aerial/USDA-2014
 
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/transportation/interstateHighways/interstateHighwaysWV_USDOT_1997_utm83_shp.zip \
