@@ -62,9 +62,9 @@ This project was primarily written to support the
 This table shows how much disk space is required to download and install
 the various components if the defaults are used.
 
-Data Set | Vector Layers |  DEMs  | 2014 Aerial Imagery (JP2s) | 2003 Aerial Imagery (JPGs) | PostgreSQL DB |  Total  |
----------|---------------|--------|----------------------------|----------------------------|---------------|---------|
-us_wv    |        496 MB | 1.6 GB |                      14 GB |                      13 GB |        9.0 GB | 38.1 GB |
+Data Set | Vector Layers |  DEMs  | 2014 Aerial Imagery (JP2s) | 2003 Aerial Imagery (JPGs) | PostgreSQL DB  |  Total  |
+---------|---------------|--------|----------------------------|----------------------------|----------------|---------|
+us_wv    |        496 MB | 1.6 GB |                      14 GB |                      13 GB |        30.0 GB | 59.1 GB |
 
 The vector layers and DEM files can be deleted once everything has been
 imported into PostgreSQL. It is recommended to keep these files in case
