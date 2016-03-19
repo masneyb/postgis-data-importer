@@ -40,6 +40,9 @@ append_to_mapserver_file()
 	LAYER_NAME=$2
 	FILE=$3
 
+	# Need to explicitly specify the bands for this data set in Mapserver
+	# 7 to avoid having the aerial imagery be washed out in the generated
+	# imagery. This did not need to be specified in Mapserver 6.4.
 	cat >> "${MAPSERVER_FILE}" << __EOF__
 LAYER
 	NAME ${LAYER_NAME}
@@ -50,6 +53,7 @@ LAYER
 	CLASS
 		MAXSCALE 60000.00
 	END
+	PROCESSING "BANDS=1,2,3"
 	PROJECTION
 		"+proj=merc"
 		"+a=6378137"
