@@ -58,6 +58,8 @@ __EOF__
 }
 
 for IN_ZIP_FILE in $(find "${DEM_DIR}" -name "*.zip" | sort) ; do
+	echo "Processing DEM file ${IN_ZIP_FILE}"
+
 	CONTOUR_TMPDIR=$(mktemp -d)
 
         unzip -qq "${IN_ZIP_FILE}" -d "${CONTOUR_TMPDIR}"
