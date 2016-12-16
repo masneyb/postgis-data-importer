@@ -223,6 +223,16 @@ download_and_import_file \
 	"${DEST_DB}" \
 	"${DEST_SRID}"
 
+download_and_import_file \
+	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/elevation/summits_GISTC_052012_utm83_shp.zip \
+	"${DEST_DIR}"/summits_GISTC_052012_utm83_shp.zip \
+	summits_GISTC_052012_utm83_shp.shp \
+	26917 \
+	wv_summits \
+	"" \
+	"" \
+	"${DEST_DB}" \
+	"${DEST_SRID}"
 
 # Generate contour lines from the DEM files
 
