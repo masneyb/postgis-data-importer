@@ -3,11 +3,9 @@
 This script is used to import various SHP files from the
 [West Virginia GIS Technical Center](http://wvgis.wvu.edu/) into a
 PostgreSQL/PostGIS database. This ensures that all layers use the
-same spatial reference system (SRID) ID to speed up read requests. The
-script generates contour lines (20 foot and 100 foot intervals)
-from a list of digital elevation model (DEM) files.
+same spatial reference system (SRID) ID to speed up read requests.
 
-Two sets of aerial imagery are also downloaded:
+The following imagery are also downloaded or generated:
 
 - [2014 USDA](http://wvgis.wvu.edu/data/dataset.php?ID=461) - The
   latest publicly available aerial imagery of West Virginia. This
@@ -18,7 +16,13 @@ Two sets of aerial imagery are also downloaded:
   detail is shown on the ground. These files use the proprietary
   MrSID file format. The download process uses their SDK to convert
   these files into JPGs.
-
+- [1994 USGS Topo Quads](http://wvgis.wvu.edu/data/dataset.php?ID=95) -
+  This is the latest USGS topo quads publicly available for West Virginia.
+  These files are in TIF format.
+- The
+  [3 meter Digital Elevation Model (DEM)](http://wvgis.wvu.edu/data/dataset.php?ID=261)
+  is used to generate contour lines (20 foot and 100 foot) and hillshade
+  imagery in TIF format.
 
 ## Examples
 
@@ -62,11 +66,7 @@ This project was primarily written to support the
 This table shows how much disk space is required to download and install
 the various components if the defaults are used.
 
-Data Set | Vector Layers |  DEMs  | 2014 Aerial Imagery (JP2s) | 2003 Aerial Imagery (JPGs) | PostgreSQL DB  |  Total  |
----------|---------------|--------|----------------------------|----------------------------|----------------|---------|
-us_wv    |        496 MB | 1.6 GB |                      14 GB |                      13 GB |        30.0 GB | 59.1 GB |
-
-The vector layers and DEM files can be deleted once everything has been
-imported into PostgreSQL. It is recommended to keep these files in case
-you need to recreate your PostgreSQL database.
+Data Set | Vector Layers |  DEMs  | 2014 Aerial Imagery (JP2s) | 2003 Aerial Imagery (JPGs) | PostgreSQL DB  |  HillShade | USGS 1994 | Total   |
+---------|---------------|--------|----------------------------|----------------------------|----------------|------------|-----------|---------|
+us_wv    |        496 MB | 1.6 GB |                      14 GB |                      13 GB |        30.0 GB |     7.9 GB |    1.5 GB | 68.5 GB |
 

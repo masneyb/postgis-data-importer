@@ -18,6 +18,8 @@ us_wv:
 
 	`pwd`/bin/us_wv/create-us-wv-hillshade.sh
 
+	`pwd`/bin/us_wv/download-us-wv-usgs-topo-1994.sh
+
 	# Downloads various SHP files. Generates 20 foot and 100 foot
 	# contours based on the DEM files downloaded above.
 	./bin/us_wv/import-us-wv-shp-files.sh "${US_WV_DB}" "${DEST_SRID}"
@@ -28,3 +30,4 @@ shellcheck:
 	shellcheck bin/us_wv/download-us-wv-samb-2003-aerial-images.sh
 	shellcheck bin/us_wv/download-us-wv-usda-2014-aerial-images.sh
 	shellcheck bin/us_wv/create-us-wv-hillshade.sh
+	shellcheck bin/us_wv/download-us-wv-usgs-topo-1994.sh
