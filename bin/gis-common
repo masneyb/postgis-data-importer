@@ -32,7 +32,7 @@ download_file()
 	fi
 
 	echo "Downloading ${URL} to ${DEST}."
-	wget -O "${DEST}" "${URL}"
+	curl -L -o "${DEST}" "${URL}"
 }
 
 download_and_import_file()

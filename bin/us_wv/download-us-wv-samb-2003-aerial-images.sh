@@ -87,7 +87,7 @@ download_aerial()
 	MRSID_FILENAME="${MRSID_DEST_DIR}"/"${BASE_FILENAME}".sid
 	if [ ! -f "${MRSID_FILENAME}" ] ; then
 		TMP=$(mktemp --suffix=.zip)
-		wget -O "${TMP}" "${MRSID_URL}"
+		curl -o "${TMP}" "${MRSID_URL}"
 		unzip "${TMP}" -d "${MRSID_DEST_DIR}"
 		rm -f "${TMP}"
 	else

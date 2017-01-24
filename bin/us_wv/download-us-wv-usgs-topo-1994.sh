@@ -78,7 +78,7 @@ download_topo()
 
 	TMP=$(mktemp --suffix=.zip)
 	echo "Downloading ${URL} to ${TMP}"
-	wget -O "${TMP}" "${URL}"
+	curl -L -o "${TMP}" "${URL}"
 
         TMPDIR=$(mktemp -d)
         unzip -qq "${TMP}" -d "${TMPDIR}"

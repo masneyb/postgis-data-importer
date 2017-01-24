@@ -38,11 +38,11 @@ This project was primarily written to support the
 	
 * Install dependencies
   - RedHat/Fedora:
-    - `sudo dnf install make unzip postgis postgresql postgresql-server gdal`
+    - `sudo dnf install make unzip postgis postgresql postgresql-server gdal curl`
     - Setup database directory: `sudo postgresql-setup --initdb --unit postgresql`
-  - Debian Jessie: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.4 gdal-bin`
-  - Ubuntu 16.04: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.5 gdal-bin postgresql-9.5-postgis-2.1`
-  - Ubuntu 14.04: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.3 gdal-bin postgresql-9.3-postgis-2.1`
+  - Debian Jessie: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.4 gdal-bin curl`
+  - Ubuntu 16.04: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.5 gdal-bin postgresql-9.5-postgis-2.1 curl`
+  - Ubuntu 14.04: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.3 gdal-bin postgresql-9.3-postgis-2.1 curl`
 * Create PostgreSQL super user for your user account (note: gives full access to other DBs):
   `MY_USER=$(whoami) && sudo -u postgres createuser -s "${MY_USER}"`
 * If you'd like to download the SAMB 2003 aerial imagery, register for a
