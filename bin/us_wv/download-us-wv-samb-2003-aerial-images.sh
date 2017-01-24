@@ -33,7 +33,8 @@ fi
 
 BASE_URL="ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/imagerybasemaps/orthophotos_SAMB_2003/UTM83/utm83zone17n/QQuad_mrsids/"
 
-BASE_DIR=$(dirname "$0")/../..
+REL_BASE_DIR=$(dirname "$0")/../..
+BASE_DIR=$(readlink -f "${REL_BASE_DIR}")
 . "${BASE_DIR}"/bin/gis-common
 
 MRSID_DEST_DIR="${BASE_DIR}"/download/us_wv/aerial/SAMB-2003/MrSID

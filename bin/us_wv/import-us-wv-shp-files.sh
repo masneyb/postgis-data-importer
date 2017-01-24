@@ -19,7 +19,8 @@
 set -e # Exit if any commands fail
 set -u # Warn about uninitialized variables
 
-BASE_DIR=$(dirname "$0")/../..
+REL_BASE_DIR=$(dirname "$0")/../..
+BASE_DIR=$(readlink -f "${REL_BASE_DIR}")
 . "${BASE_DIR}"/bin/gis-common
 
 DEST_DB=${1:-}

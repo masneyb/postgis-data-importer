@@ -20,7 +20,8 @@
 set -e # Exit if any commands fail
 set -u # Warn about uninitialized variables
 
-BASE_DIR=$(dirname "$0")/../..
+REL_BASE_DIR=$(dirname "$0")/../..
+BASE_DIR=$(readlink -f "${REL_BASE_DIR}")
 . "${BASE_DIR}"/bin/gis-common
 
 BASE_URL="ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/elevation/3MeterDEM_SAMB_2003_utm83/tiff/zipped"

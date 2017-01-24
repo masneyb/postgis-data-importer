@@ -25,7 +25,8 @@ set -u # Warn about uninitialized variables
 
 BASE_URL="ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/imagerybasemaps/24kDRG_USGS/NAD83/no_collar/"
 
-BASE_DIR=$(dirname "$0")/../..
+REL_BASE_DIR=$(dirname "$0")/../..
+BASE_DIR=$(readlink -f "${REL_BASE_DIR}")
 . "${BASE_DIR}"/bin/gis-common
 
 DEST_DIR="${BASE_DIR}"/download/us_wv/aerial/USGS-1994/
