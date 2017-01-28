@@ -45,9 +45,9 @@ This project was primarily written to support the
   - Ubuntu 14.04: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.3 gdal-bin postgresql-9.3-postgis-2.1 curl`
 * Create PostgreSQL super user for your user account (note: gives full access to other DBs):
   `MY_USER=$(whoami) && sudo -u postgres createuser -s "${MY_USER}"`
-* If you'd like to download the SAMB 2003 aerial imagery, register for a
-  developer account with [Lizard Tech](https://www.lizardtech.com/developer/)
-  and download the unified SDK.
+* If you'd like to download the SAMB 2003 aerial imagery, then download the
+  [GeoExpress Command Line Applications](https://www.lizardtech.com/gis-tools/tools-and-utilities)
+  from Lizard Tech's website.
 * Edit the settings at the top of the _Makefile_. You will need to uncomment
   the call to _download-us-wv-samb-2003-aerial-images.sh_ in the Makefile if
   you downloaded Lizard Tech's SDK.
