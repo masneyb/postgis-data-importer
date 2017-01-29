@@ -23,11 +23,13 @@
 set -e # Exit if any commands fail
 set -u # Warn about uninitialized variables
 
-MRSID_DECODE_BINARY=${1:-}
-KEEP_MRSID_FILES=${2:-}
+KEEP_MRSID_FILES=${1:-}
 
-if [ "${MRSID_DECODE_BINARY}" = "" ] || [ ! -x "${MRSID_DECODE_BINARY}" ] ; then
-	echo "usage: $0 <path to mrsiddecode binary> <keep mrsid files (0|1)>" >&2
+if [ "${MRSID_DECODE_BINARY}" = "" ] ; then
+	echo "$0: Aborting since the MRSID_DECODE_BINARY environment variable is not set."
+	exit 0
+elif [ "${KEEP_MRSID_FILES}" == "" ] ; then
+	echo "usage: $0 <keep mrsid files (0|1)>" >&2
 	exit 1
 fi
 
