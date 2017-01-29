@@ -216,7 +216,7 @@ download_and_import_file \
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/geoscience/geologyKarstFormations_WVGES_1968_utm83_shp.zip \
 	"${DEST_DIR}"/geologyKarstFormations_WVGES_1968_utm83_shp.zip \
-	geologyKarstFormations_WVGES_1968_utm83.shp \
+	geologyKarstFormations_WVGES_1968_utm83_shp/geologyKarstFormations_WVGES_1968_utm83.shp \
 	26917 \
 	wv_karst \
 	"" \
