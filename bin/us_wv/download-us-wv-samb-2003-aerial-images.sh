@@ -25,7 +25,7 @@ set -u # Warn about uninitialized variables
 
 KEEP_MRSID_FILES=${1:-}
 
-if [ "${MRSID_DECODE_BINARY}" = "" ] ; then
+if [ "${MRSID_DECODE_BINARY:-}" = "" ] ; then
 	echo "$0: Aborting since the MRSID_DECODE_BINARY environment variable is not set."
 	exit 0
 elif [ "${KEEP_MRSID_FILES}" == "" ] ; then
