@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 # download-us-wv-dem-files.sh
 #

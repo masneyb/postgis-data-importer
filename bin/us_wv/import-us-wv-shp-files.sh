@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 # import-us-wv-shp-files.sh
 # Copyright (C) 2012-2013,2016 Brian Masney <masneyb@onstation.org>
