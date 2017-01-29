@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # download-us-wv-samb-2003-aerial-images.sh
 #

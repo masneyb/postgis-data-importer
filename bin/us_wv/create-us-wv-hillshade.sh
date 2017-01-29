@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # create-us-wv-hillshade.sh
 # Copyright (C) 2016 Brian Masney <masneyb@onstation.org>

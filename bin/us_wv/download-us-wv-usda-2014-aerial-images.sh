@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # download-us-wv-usda-2014-aerial-images.sh
 #
