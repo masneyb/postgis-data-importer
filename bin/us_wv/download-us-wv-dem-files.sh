@@ -29,14 +29,15 @@ DEST_DIR="${BASE_DIR}"/download/us_wv/dem
 
 download_dem()
 {
-	ZIP_FILENAME="${DEST_DIR}"/"${1}"
+	BASE_FILENAME="${1}"
+	ZIP_FILENAME="${DEST_DIR}"/"${BASE_FILENAME}"
 	TIF_FILENAME="${ZIP_FILENAME//_tif.zip/.tif}"
 
 	if [ -f "${TIF_FILENAME}" ] ; then
 		return
 	fi
 
-	download_file "${BASE_URL}"/"${FILENAME}" "${ZIP_FILENAME}"
+	download_file "${BASE_URL}"/"${BASE_FILENAME}" "${ZIP_FILENAME}"
 	unzip "${ZIP_FILENAME}"
 	rm -f "${ZIP_FILENAME}"
 }
