@@ -69,7 +69,5 @@ for INPUT_FILENAME in $(find "${DEM_DIR}" -name "*.tif" | sort) ; do
 	fi
 
 	append_to_mapserver_file "${BASE_FILENAME}" "${DEST_FILENAME}"
-
-	rm -rf "${CONTOUR_TMPDIR}"
 done
 
