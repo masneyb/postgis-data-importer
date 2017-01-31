@@ -247,8 +247,8 @@ if [ "${CONTOUR_TABLE_EXISTS}" = "0" ] ; then
 	create_contour_table "${DEST_DB}" "${DEST_SRID}" "${TWENTY_FT_TABLE}"
 
 	for IN_TIF_FILE in $(find "${DEM_DIR}" -name "*.tif" | sort) ; do
-	        generate_contours "${IN_TIF_FILE}" "${CONTOUR_SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_100 100 "${HUNDRED_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
-	        generate_contours "${IN_TIF_FILE}" "${CONTOUR_SRC_SRID}" "${CONTOUR_TMPDIR}"/contour_20 20 "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+	        generate_contours "${IN_TIF_FILE}" "${CONTOUR_SRC_SRID}" 100 "${HUNDRED_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
+	        generate_contours "${IN_TIF_FILE}" "${CONTOUR_SRC_SRID}" 20 "${TWENTY_FT_TABLE}" "${DEST_DB}" "${DEST_SRID}"
 	done
 else
 	echo "Not generating the contour lines since the table ${DEST_DB}.${HUNDRED_FT_TABLE} already exists"
