@@ -29,10 +29,19 @@ DEST_DIR="${BASE_DIR}"/download/us_wv/dem
 
 download_dem()
 {
-	FILENAME=$1
+	ZIP_FILENAME="${DEST_DIR}"/"${1}"
+	TIF_FILENAME="${ZIP_FILENAME//_tif.zip/.tif}"
 
-	download_file "${BASE_URL}"/"${FILENAME}" "${DEST_DIR}"/"${FILENAME}"
+	if [ -f "${TIF_FILENAME}" ] ; then
+		return
+	fi
+
+	download_file "${BASE_URL}"/"${FILENAME}" "${ZIP_FILENAME}"
+	unzip "${ZIP_FILENAME}"
+	rm -f "${ZIP_FILENAME}"
 }
+
+cd "${DEST_DIR}"
 
 # Note: This is all 7.5 minute quads that have karst. This list was found
 # with the following SQL query:
