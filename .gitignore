@@ -1,10 +1,12 @@
-*.zip
-*.map
+*.aux
+*.jgw
 *.jp2
 *.jpg
-*.jgw
+*.map
+*.rrd
 *.sid
 *.sdw
-*.aux
-*.txt
 *.tif
+*.txt
+*.xml
+*.zip
