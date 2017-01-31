@@ -58,19 +58,14 @@ END
 __EOF__
 }
 
-for IN_ZIP_FILE in $(find "${DEM_DIR}" -name "*.zip" | sort) ; do
-	echo "Processing DEM file ${IN_ZIP_FILE}"
+for INPUT_FILENAME in $(find "${DEM_DIR}" -name "*.tif" | sort) ; do
+	echo "Processing DEM file ${INPUT_FILENAME}"
 
-	CONTOUR_TMPDIR=$(mktemp -d)
-
-        unzip -qq "${IN_ZIP_FILE}" -d "${CONTOUR_TMPDIR}"
-
-	INPUT_FILENAME=$(find "${CONTOUR_TMPDIR}"/*.tif | head -n 1)
 	BASE_FILENAME=$(basename "${INPUT_FILENAME}" | sed s/\.tif$//)
 	DEST_FILENAME="${DEST_DIR}"/"${BASE_FILENAME}"_hillshade.tif
 
 	if [ ! -f "${DEST_FILENAME}" ] ; then
-		gdaldem hillshade "${CONTOUR_TMPDIR}"/"${BASE_FILENAME}".tif "${DEST_FILENAME}"
+		gdaldem hillshade "${INPUT_FILENAME}" "${DEST_FILENAME}"
 	fi
 
 	append_to_mapserver_file "${BASE_FILENAME}" "${DEST_FILENAME}"
