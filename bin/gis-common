@@ -117,15 +117,18 @@ generate_contours()
 {
 	local INFILE=$1
 	local SRC_SRID=$2
-	local DESTDIR=$3
-	local INTERVAL=$4
-	local DEST_DB_TABLE=$5
-	local DEST_DB=$6
-	local DEST_SRID=$7
+	local INTERVAL=$3
+	local DEST_DB_TABLE=$4
+	local DEST_DB=$5
+	local DEST_SRID=$6
+
+	local DESTDIR=$(mktemp -d)
 
 	echo "Generating contours for file ${INFILE} with interval ${INTERVAL}"
 	gdal_contour -a ele -i "${INTERVAL}" "${INFILE}" "${DESTDIR}"
 	import_shp "${SRC_SRID}" "${DESTDIR}"/contour.shp "${DEST_DB_TABLE}" -a "" "${DEST_DB}" "${DEST_SRID}"
+
+	rm -rf "${DESTDIR}"
 }
 
 create_contour_table()
