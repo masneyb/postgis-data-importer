@@ -125,7 +125,7 @@ generate_contours()
 	local DESTDIR=$(mktemp -d)
 
 	echo "Generating contours for file ${INFILE} with interval ${INTERVAL}"
-	gdal_contour -a ele -i "${INTERVAL}" "${INFILE}" "${DESTDIR}"
+	gdal_contour -a ele -i "${INTERVAL}" "${INFILE}" "${DESTDIR}"/contour.shp
 	import_shp "${SRC_SRID}" "${DESTDIR}"/contour.shp "${DEST_DB_TABLE}" -a "" "${DEST_DB}" "${DEST_SRID}"
 
 	rm -rf "${DESTDIR}"
