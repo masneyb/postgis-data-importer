@@ -38,26 +38,24 @@ This project was primarily written to support the
 	
 * Install dependencies
   - RedHat/Fedora:
-    - `sudo dnf install make unzip postgis postgresql postgresql-server gdal curl`
+    - `sudo dnf install curl gdal make postgis postgresql postgresql-server unzip`
     - Setup database directory: `sudo postgresql-setup --initdb --unit postgresql`
-  - Debian Jessie: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.4 gdal-bin curl`
-  - Ubuntu 16.04: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.5 gdal-bin postgresql-9.5-postgis-2.1 curl`
-  - Ubuntu 14.04: `sudo apt-get install make unzip postgis postgresql-client postgresql-9.3 gdal-bin postgresql-9.3-postgis-2.1 curl`
+  - Ubuntu 18.04: `sudo apt-get install curl gdal-bin make postgis postgresql-10 postgresql-10-postgis-2.4 postgresql-client unzip`
 * Create PostgreSQL super user for your user account (note: gives full access to other DBs):
-  `MY_USER=$(whoami) && sudo -u postgres createuser -s "${MY_USER}"`
+  `sudo -u postgres createuser -s "$(whoami)"`
 * If you'd like to download the SAMB 2003 aerial imagery, then download the
   [GeoExpress Command Line Applications](https://www.lizardtech.com/gis-tools/tools-and-utilities)
   from Lizard Tech's website.
-* Edit the settings at the top of the _Makefile_. You will need to uncomment
-  the call to _download-us-wv-samb-2003-aerial-images.sh_ in the Makefile if
-  you downloaded Lizard Tech's SDK.
+  - Edit the settings at the top of the _Makefile_. You will need to uncomment
+    the call to _download-us-wv-samb-2003-aerial-images.sh_ in the Makefile if
+    you downloaded Lizard Tech's SDK.
 * Examine the bottom of the 
   [DEM](bin/us_wv/download-us-wv-dem-files.sh),
-  [2014 aerial](bin/us_wv/download-us-wv-usda-2014-aerial-images.sh), and
-  [2003 aerial](bin/us_wv/download-us-wv-samb-2003-aerial-images.sh) import
-  scripts to ensure that the data is downloaded for your areas of interest. It
-  is currently configured to download the data for all regions that are
-  underlain by karst.
+  [2014 aerial](bin/us_wv/download-us-wv-usda-2014-aerial-images.sh),
+  [2003 aerial](bin/us_wv/download-us-wv-samb-2003-aerial-images.sh), and
+  [1994 USGS](bin/us_wv/download-us-wv-usgs-topo-1994.sh) import scripts to
+  ensure that the data is downloaded for your areas of interest. It is currently
+  configured to download the data for all regions that are underlain by karst.
 * Run `make` to import the vector data into the _wvgis_ PostgreSQL database.
 
 
