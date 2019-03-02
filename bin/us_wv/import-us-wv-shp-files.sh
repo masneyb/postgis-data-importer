@@ -137,9 +137,9 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/nationalForestBoundaries/nationalForestOwnership_USFWS_20170803_utm83_shp.zip \
-	"${DEST_DIR}"/nationalForestOwnership_USFWS_20170803_utm83_shp.zip \
-	nationalForestOwnership_USFWS_20170803_utm83.shp \
+	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/nationalForestBoundaries/nationalForestOwnership_USFWS_20181016_utm83_shp.zip \
+	"${DEST_DIR}"/nationalForestOwnership_USFWS_20181016_utm83_shp.zip \
+	nationalForestOwnership_USFWS_20181016_utm83.shp \
 	26917 \
 	wv_national_forests \
 	"" \
