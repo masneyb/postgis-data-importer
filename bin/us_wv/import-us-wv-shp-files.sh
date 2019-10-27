@@ -183,7 +183,7 @@ download_and_import_file \
 download_and_import_file \
 	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/wildlifeManagementAreas/wvdnrManagedLands_wvdnr_20190315_utm83_shp.zip \
 	"${DEST_DIR}"/wvdnrManagedLands_wvdnr_20190315_utm83_shp.zip \
-	wvdnrManagedLands_wvdnr_20170731_utm83_shp/wvdnrManagedLands_wvdnr_20190315_utm83_shp.zip \
+	wvdnrManagedLands_wvdnr_20190315_utm83_shp/wvdnrManagedLands_wvdnr_20190315_utm83.shp \
 	26917 \
 	wvdnr_managed_lands \
 	"" \
