@@ -38,7 +38,7 @@ This project was primarily written to support the
 	
 * Install dependencies
   - RedHat/Fedora:
-    - `sudo dnf install curl gdal make postgis postgresql postgresql-server unzip`
+    - `sudo dnf install curl gdal make postgis postgis-client postgresql postgresql-server unzip`
     - Setup database directory: `sudo postgresql-setup --initdb --unit postgresql`
   - Ubuntu 18.04: `sudo apt-get install curl gdal-bin make postgis postgresql-10 postgresql-10-postgis-2.4 postgresql-client unzip`
 * Create PostgreSQL super user for your user account (note: gives full access to other DBs):
