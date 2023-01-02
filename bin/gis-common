@@ -89,14 +89,12 @@ import_shp()
 		echo "Transforming ${SRC_SHP} with ogr2ogr ${OGRARGS} via ${NEW_SHP}"
 		ogr2ogr -skipfailures -f "ESRI Shapefile" ${OGRARGS} "${NEW_SHP}" "${SRC_SHP}"
 		echo "Importing ${NEW_SHP} into table ${DEST_DB}.${DEST_DB_TABLE}"
-		shp2pgsql ${SHP2PGSQL_EXTRA_ARGS} -g geom -s "${DEST_SRID}" "${NEW_SHP}" "${DEST_DB_TABLE}" | psql "${DEST_DB}" > /dev/null
+		shp2pgsql ${SHP2PGSQL_EXTRA_ARGS} -I -g geom -s "${DEST_SRID}" "${NEW_SHP}" "${DEST_DB_TABLE}" | psql "${DEST_DB}" > /dev/null
 		rm -rf "${TRANS_TMPDIR}"
 	else
 		echo "Importing ${SRC_SHP} into table ${DEST_DB}.${DEST_DB_TABLE}"
-		shp2pgsql ${SHP2PGSQL_EXTRA_ARGS} -g geom -s "${SRC_SRID}" "${SRC_SHP}" "${DEST_DB_TABLE}" | psql "${DEST_DB}" > /dev/null
+		shp2pgsql ${SHP2PGSQL_EXTRA_ARGS} -I -g geom -s "${SRC_SRID}" "${SRC_SHP}" "${DEST_DB_TABLE}" | psql "${DEST_DB}" > /dev/null
 	fi
-
-	echo "CREATE INDEX ${DEST_DB_TABLE}_geom_idx ON ${DEST_DB_TABLE} USING gist(geom);" | psql "${DEST_DB}" > /dev/null
 }
 
 init_postgis_db()
