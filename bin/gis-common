@@ -95,6 +95,8 @@ import_shp()
 		echo "Importing ${SRC_SHP} into table ${DEST_DB}.${DEST_DB_TABLE}"
 		shp2pgsql ${SHP2PGSQL_EXTRA_ARGS} -g geom -s "${SRC_SRID}" "${SRC_SHP}" "${DEST_DB_TABLE}" | psql "${DEST_DB}" > /dev/null
 	fi
+
+	echo "CREATE INDEX ${DEST_DB_TABLE}_geom_idx ON ${DEST_DB_TABLE} USING gist(geom);" | psql "${DEST_DB}" > /dev/null
 }
 
 init_postgis_db()
