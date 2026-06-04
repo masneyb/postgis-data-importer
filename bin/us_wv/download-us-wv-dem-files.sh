@@ -24,7 +24,7 @@ REL_BASE_DIR=$(dirname "$0")/../..
 BASE_DIR=$(readlink -f "${REL_BASE_DIR}")
 . "${BASE_DIR}"/bin/gis-common
 
-BASE_URL="ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/elevation/3MeterDEM_SAMB_2003_utm83/tiff/zipped"
+BASE_URL="http://data.wvgis.wvu.edu/pub/Clearinghouse/elevation/3MeterDEM_SAMB_2003_utm83/tiff/zipped"
 DEST_DIR="${BASE_DIR}"/download/us_wv/dem
 
 download_dem()

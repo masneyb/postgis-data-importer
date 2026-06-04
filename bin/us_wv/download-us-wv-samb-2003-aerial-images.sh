@@ -33,7 +33,7 @@ elif [ "${KEEP_MRSID_FILES}" == "" ] ; then
 	exit 1
 fi
 
-BASE_URL="ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/imagerybasemaps/orthophotos_SAMB_2003/UTM83/utm83zone17n/QQuad_mrsids/"
+BASE_URL="http://data.wvgis.wvu.edu/pub/Clearinghouse/imagerybasemaps/orthophotos_SAMB_2003/UTM83/utm83zone17n/QQuad_mrsids/"
 
 REL_BASE_DIR=$(dirname "$0")/../..
 BASE_DIR=$(readlink -f "${REL_BASE_DIR}")

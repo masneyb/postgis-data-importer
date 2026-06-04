@@ -23,7 +23,7 @@
 set -e # Exit if any commands fail
 set -u # Warn about uninitialized variables
 
-BASE_URL="ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/ImageryBaseMaps/NAIP2014/NAIP2014_4BandImagery_compressed"
+BASE_URL="http://data.wvgis.wvu.edu/pub/Clearinghouse/ImageryBaseMaps/NAIP2014/NAIP2014_4BandImagery_compressed"
 
 REL_BASE_DIR=$(dirname "$0")/../..
 BASE_DIR=$(readlink -f "${REL_BASE_DIR}")

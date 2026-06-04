@@ -38,7 +38,7 @@ DEM_DIR="${BASE_DIR}"/download/us_wv/dem
 #USDA_2014_AERIAL_DIR="${BASE_DIR}"/download/us_wv/aerial/USDA-2014
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/transportation/interstateHighways/interstateHighwaysWV_USDOT_1997_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/transportation/interstateHighways/interstateHighwaysWV_USDOT_1997_utm83_shp.zip \
 	"${DEST_DIR}"/interstateHighwaysWV_USDOT_1997_utm83_shp.zip \
 	interstateHighwaysWV_USDOT_1997_utm83.shp \
 	26917 \
@@ -49,7 +49,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Transportation/roadsUSHighways_USCensus_1997_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/Transportation/roadsUSHighways_USCensus_1997_utm83_shp.zip \
 	"${DEST_DIR}"/roadsUSHighways_USCensus_1997_utm83_shp.zip \
 	roadsUSHighways_USCensus_1997_utm83.shp \
 	26917 \
@@ -60,7 +60,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/transportation/roadsAndRailroads_usCensus/roads_USCensus_2011_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/transportation/roadsAndRailroads_usCensus/roads_USCensus_2011_utm83_shp.zip \
 	"${DEST_DIR}"/roads_USCensus_2011_utm83_shp.zip \
 	roads_USCensus_2011_UTM83.shp \
 	26917 \
@@ -71,7 +71,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/inlandWaters/4800HydrologicFeatureGeometry_NHD_2003_utm83/STATEWIDE_lr_hydro_utm83.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/inlandWaters/4800HydrologicFeatureGeometry_NHD_2003_utm83/STATEWIDE_lr_hydro_utm83.zip \
 	"${DEST_DIR}"/STATEWIDE_lr_hydro_utm83.zip \
 	lr_hydro_polygons_all.shp \
 	26917 \
@@ -82,7 +82,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/inlandWaters/4800HydrologicFeatureGeometry_NHD_2003_utm83/STATEWIDE_lr_hydro_utm83.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/inlandWaters/4800HydrologicFeatureGeometry_NHD_2003_utm83/STATEWIDE_lr_hydro_utm83.zip \
 	"${DEST_DIR}"/STATEWIDE_lr_hydro_utm83.zip \
 	lr_hydro_lines_all.shp \
 	26917 \
@@ -93,7 +93,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/transportation/railroads_RTI_2005_UTM83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/transportation/railroads_RTI_2005_UTM83_shp.zip \
 	"${DEST_DIR}"/railroads_RTI_2005_UTM83_shp.zip \
 	railroads_rahallTransportationInstitute_2005_UTM83.shp \
 	26917 \
@@ -104,7 +104,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Transportation/miscellaneousTransportation_USCensus_2000_utm83.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/Transportation/miscellaneousTransportation_USCensus_2000_utm83.zip \
 	"${DEST_DIR}"/miscellaneousTransportation_USCensus_2000_utm83.zip \
 	miscellaneousTransportation_USCensus_2000_utm83.shp \
 	26917 \
@@ -115,7 +115,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Transportation/recreationalWWTrailsofWV_20151117_utm83.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/Transportation/recreationalWWTrailsofWV_20151117_utm83.zip \
 	"${DEST_DIR}"/recreationalTrailsofWV_manysources_20151117_utm83.zip \
 	recreationalWWTrailsofWV_20151117_utm83/recreationalWWTrails_ofWV_20151117_utm83.shp \
 	26917 \
@@ -126,7 +126,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/location/indexGrid24kQuads_USGS_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/location/indexGrid24kQuads_USGS_utm83_shp.zip \
 	"${DEST_DIR}"/indexGrid24kQuads_USGS_utm83_shp.zip \
 	indexGrid24kQuads_USGS_utm83.shp \
 	26917 \
@@ -137,7 +137,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/nationalForestBoundaries/nationalForestOwnership_USFWS_20181016_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/boundaries/nationalForestBoundaries/nationalForestOwnership_USFWS_20181016_utm83_shp.zip \
 	"${DEST_DIR}"/nationalForestOwnership_USFWS_20181016_utm83_shp.zip \
 	nationalForestOwnership_USFWS_20181016_utm83.shp \
 	26917 \
@@ -148,7 +148,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/nationalParkBoundaries_nationalParkService_200309_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/boundaries/nationalParkBoundaries_nationalParkService_200309_utm83_shp.zip \
 	"${DEST_DIR}"/nationalParkBoundaries_nationalParkService_200309_utm83_shp.zip \
 	nationalParkBoundaries_nationalParkService_200309_utm83.shp \
 	26917 \
@@ -159,7 +159,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Boundaries/wvStateForestBoundaries_wvdof_092015_utm83.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/Boundaries/wvStateForestBoundaries_wvdof_092015_utm83.zip \
 	"${DEST_DIR}"/wvStateForestBoundaries_wvdof_092015_utm83.zip \
 	wvStateForestBoundaries_wvdof_092015_utm83.shp \
 	26917 \
@@ -170,7 +170,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/stateParkBoundaries_WVDNR_2000_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/boundaries/stateParkBoundaries_WVDNR_2000_utm83_shp.zip \
 	"${DEST_DIR}"/stateParkBoundaries_WVDNR_2000_utm83_shp.zip \
 	stateParkBoundaries_WVDNR_2000_utm83.shp \
 	26917 \
@@ -181,7 +181,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/wildlifeManagementAreas/wvdnrManagedLands_wvdnr_20200916_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/boundaries/wildlifeManagementAreas/wvdnrManagedLands_wvdnr_20200916_utm83_shp.zip \
 	"${DEST_DIR}"/wvdnrManagedLands_wvdnr_20200916_utm83_shp.zip \
 	wvdnrManagedLands_wvdnr_20200916_utm83.shp \
 	26917 \
@@ -192,7 +192,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/boundaries/countyBoundary_censusAndUSGS_200503_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/boundaries/countyBoundary_censusAndUSGS_200503_utm83_shp.zip \
 	"${DEST_DIR}"/countyBoundary_censusAndUSGS_200503_utm83_shp.zip \
 	countyBoundary_censusAndUSGS_200503_utm83.shp \
 	26917 \
@@ -203,7 +203,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 	
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/Boundaries/IncorporatedPlaces_Census_201111_UTM83.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/Boundaries/IncorporatedPlaces_Census_201111_UTM83.zip \
 	"${DEST_DIR}"/IncorporatedPlaces_Census_201111_UTM83.zip \
 	IncorporatedPlaces_Census_201111_UTM83.shp \
 	26917 \
@@ -214,7 +214,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/geoscience/geologyKarstFormations_WVGES_1968_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/geoscience/geologyKarstFormations_WVGES_1968_utm83_shp.zip \
 	"${DEST_DIR}"/geologyKarstFormations_WVGES_1968_utm83_shp.zip \
 	geologyKarstFormations_WVGES_1968_utm83_shp/geologyKarstFormations_WVGES_1968_utm83.shp \
 	26917 \
@@ -225,7 +225,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	ftp://ftp.wvgis.wvu.edu/pub/Clearinghouse/elevation/summits_GISTC_052012_utm83_shp.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/elevation/summits_GISTC_052012_utm83_shp.zip \
 	"${DEST_DIR}"/summits_GISTC_052012_utm83_shp.zip \
 	summits_GISTC_052012_utm83_shp.shp \
 	26917 \
