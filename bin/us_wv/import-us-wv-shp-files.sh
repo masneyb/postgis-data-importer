@@ -60,9 +60,9 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	http://data.wvgis.wvu.edu/pub/Clearinghouse/transportation/roadsAndRailroads_usCensus/roads_USCensus_2011_utm83_shp.zip \
-	"${DEST_DIR}"/roads_USCensus_2011_utm83_shp.zip \
-	roads_USCensus_2011_UTM83.shp \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/transportation/roadsAndRailroads_usCensus/roads_USCensus_2023_utm83.zip \
+	"${DEST_DIR}"/roads_USCensus_2023_utm83.zip \
+	roads_USCensus_2023_utm83.shp \
 	26917 \
 	wv_census_roads \
 	"" \
@@ -71,7 +71,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	http://data.wvgis.wvu.edu/pub/Clearinghouse/inlandWaters/4800HydrologicFeatureGeometry_NHD_2003_utm83/STATEWIDE_lr_hydro_utm83.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/inlandWaters/4800HydrographicFeatureGeometry_NHD_2003_utm83/STATEWIDE_lr_hydro_utm83.zip \
 	"${DEST_DIR}"/STATEWIDE_lr_hydro_utm83.zip \
 	lr_hydro_polygons_all.shp \
 	26917 \
@@ -82,7 +82,7 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	http://data.wvgis.wvu.edu/pub/Clearinghouse/inlandWaters/4800HydrologicFeatureGeometry_NHD_2003_utm83/STATEWIDE_lr_hydro_utm83.zip \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/inlandWaters/4800HydrographicFeatureGeometry_NHD_2003_utm83/STATEWIDE_lr_hydro_utm83.zip \
 	"${DEST_DIR}"/STATEWIDE_lr_hydro_utm83.zip \
 	lr_hydro_lines_all.shp \
 	26917 \
@@ -137,9 +137,9 @@ download_and_import_file \
 	"${DEST_SRID}"
 
 download_and_import_file \
-	http://data.wvgis.wvu.edu/pub/Clearinghouse/boundaries/nationalForestBoundaries/nationalForestOwnership_USFWS_20181016_utm83_shp.zip \
-	"${DEST_DIR}"/nationalForestOwnership_USFWS_20181016_utm83_shp.zip \
-	nationalForestOwnership_USFWS_20181016_utm83.shp \
+	http://data.wvgis.wvu.edu/pub/Clearinghouse/boundaries/nationalForestBoundaries/nationalForest_2024_utm83.zip \
+	"${DEST_DIR}"/nationalForest_2024_utm83.zip \
+	nationalForest_2024_utm83.shp \
 	26917 \
 	wv_national_forests \
 	"" \
